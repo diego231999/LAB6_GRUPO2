@@ -51,6 +51,11 @@ public class JuegosController {
             return "juegos/lista";
         }else if (rol.equals("USER")) {
             model.addAttribute("listajuegos", juegosRepository.obtenerJuegosPorUser(user.getIdusuario()));
+
+            List<Generos> listaGeneros = generosRepository.findAll();
+            model.addAttribute("listaGeneros", listaGeneros);
+
+
             return "juegos/comprado";
         } else {
             model.addAttribute("listajuegos", listajuegos);
