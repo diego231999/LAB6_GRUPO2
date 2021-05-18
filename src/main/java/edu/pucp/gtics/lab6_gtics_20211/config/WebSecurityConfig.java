@@ -29,8 +29,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true);
 
         http.authorizeRequests()
-                .antMatchers("/plataformas/editarFrm", "/plataformas/lista").hasAuthority("ADMIN")
-                .antMatchers("/distribuidoras/editarFrm", "/distribuidoras/lista").hasAuthority("ADMIN")
+                .antMatchers("/plataformas/editarFrm", "/plataformas/lista", "/plataformas/**").hasAuthority("ADMIN")
+                .antMatchers("/distribuidoras/editarFrm", "/distribuidoras/lista", "distribuidoras/**").hasAuthority("ADMIN")
                 .antMatchers("/juegos/editarFrm", "/juegos/lista").hasAnyAuthority("ADMIN","USER")
                 .anyRequest().permitAll();
     }
