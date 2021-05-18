@@ -18,7 +18,10 @@
                         <div class="card-body">
                             <h5 class="card-title" >
                                 <span th:text="${juego.nombre}"></span>
-                                <!-- ....... -->
+                                <span th:class="bg-warning" th:text="${listaGeneros.get(juego.genero).nombre}"></span>
+<!--                                <span th:class="bg-warning"  th:text="${juego.getGenero().getNombre()}"></span>-->
+<!--                                <span th:each="genero : ${listaGeneros}" th:if="${genero.idgenero eq juego.getGenero().getNombre()}" th:text="${genero.nombre}"></span>-->
+
                             </h5>
                             <p class="card-text" th:text="${juego.descripcion}"></p>
                         </div>
