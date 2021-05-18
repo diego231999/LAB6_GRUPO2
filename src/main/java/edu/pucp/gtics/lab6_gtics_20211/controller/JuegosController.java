@@ -77,13 +77,13 @@ public class JuegosController {
     }
 
     @GetMapping("/juegos/editar")
-    public String editarJuegos(@RequestParam("id") int id, Model model){
+    public String editarJuegos(@RequestParam("id") int id, Model model ,@ModelAttribute("juego") Juegos juego){
         Optional<Juegos> opt = juegosRepository.findById(id);
         List<Plataformas> listaPlataformas = plataformasRepository.findAll();
         List<Distribuidoras> listaDistribuidoras = distribuidorasRepository.findAll();
         List<Generos> listaGeneros = generosRepository.findAll();
         if (opt.isPresent()){
-            Juegos juego = opt.get();
+            juego = opt.get();
             model.addAttribute("juego", juego);
             model.addAttribute("listaPlataformas", listaPlataformas);
             model.addAttribute("listaDistribuidoras", listaDistribuidoras);
