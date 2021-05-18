@@ -23,11 +23,17 @@
                         <div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">Error</div>
                     </div>
                     <div class="form-group">
-                        <label for="genero.idgenero">Género</label>
-                        <!-- ....... -->
+                        <label for="${genero.idgenero}">Género</label>
+                        <select class="form-control custom-select"  th:field="*{genero.idgenero}" >
+                            <option value="-1">- Seleccione -</option>
+                            <option th:each="g : ${listaGeneros}"
+                                    th:value="${g.idgenero}"
+                                    th:text="${g.nombre}"
+                                    th:selected="(${g.idgenero} == *{genero.idgenero})" ></option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="plataforma.idplataforma">Plataforma</label>
+                        <label for="${plataforma.idplataforma}">Plataforma</label>
                         <select class="form-control custom-select"  th:field="*{plataforma.idplataforma}" >
                           <option value="-1">- Seleccione -</option>
                           <option th:each="plataforma : ${listaPlataformas}"
@@ -38,8 +44,8 @@
                         <div class="text-danger" th:if="${#fields.hasErrors('plataforma.idplataforma')}" th:errors="*{plataforma.idplataforma}">Error</div>
                     </div>
                     <div class="form-group">
-                        <label for="distribuidora.iddistribuidora">Dsitribuidora</label>
-                        <!-- ....... -->
+                        <label for="${distribuidora.iddistribuidora}">Distribuidora</label>
+                        <!-- -->
                     </div>
                     <div class="form-group">
                         <label>Imagen URL</label>
