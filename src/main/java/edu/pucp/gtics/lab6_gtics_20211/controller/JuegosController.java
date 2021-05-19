@@ -101,14 +101,15 @@ public class JuegosController {
 
     @PostMapping("/juegos/guardar")
     public String guardarJuegos(Model model, RedirectAttributes attr, @ModelAttribute("juego") @Valid Juegos juego, BindingResult bindingResult ){
+
         if(bindingResult.hasErrors()){
             List<Plataformas> listaPlataformas = plataformasRepository.findAll();
-            List<Distribuidoras> listaDistribuidoras = distribuidorasRepository.findAll();
             List<Generos> listaGeneros = generosRepository.findAll();
+            List<Distribuidoras> listaDistribuidoras = distribuidorasRepository.findAll();
             model.addAttribute("juego", juego);
             model.addAttribute("listaPlataformas", listaPlataformas);
-            model.addAttribute("listaDistribuidoras", listaDistribuidoras);
             model.addAttribute("listaGeneros", listaGeneros);
+            model.addAttribute("listaDistribuidoras", listaDistribuidoras);
             return "juegos/editarFrm";
         } else {
             if (juego.getIdjuego() == 0) {
